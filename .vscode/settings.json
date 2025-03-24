@@ -1,0 +1,10 @@
+{
+    "docwriter.style": "Google",
+    "cSpell.words": [
+        "dotenv",
+        "PICO",
+        "Picovoice",
+        "pvporcupine",
+        "pyaudio"
+    ]
+}
