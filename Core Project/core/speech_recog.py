@@ -1,40 +1,27 @@
-import queue
-import sounddevice as sd
-import vosk
-import json
-from nlp_processor import recognize_intent
+import speech_recognition as sr
 
-# Set model path
-MODEL_PATH = "D:/Project Vermeil AI/vermeil/Core Project/core/vosk_model/vosk-model-small-en-us-0.15"
+# Initialize recognizer
+recognizer = sr.Recognizer()
 
-# Load Vosk model
-vosk_model = vosk.Model(MODEL_PATH)
-
-# Create a queue for audio processing
-audio_queue = queue.Queue()
-
-# Speech recognition function
-def callback(indata, frames, time, status):
-    """Callback function to store audio data in queue."""
-    if status:
-        print(f"Audio Status: {status}")
-    audio_queue.put(bytes(indata))
-
-# Configure microphone input
 def recognize_speech():
     """Captures microphone input and converts speech to text."""
-    with sd.RawInputStream(samplerate=16000, blocksize=8000, dtype="int16", channels=1, callback=callback):
-        recognizer = vosk.KaldiRecognizer(vosk_model, 16000)
-
+    with sr.Microphone() as source:
         print("🎤 Listening... Speak now.")
-        while True:
-            data = audio_queue.get()
-            if recognizer.AcceptWaveform(data):
-                result = json.loads(recognizer.Result())
-                text = result.get("text", "")
-                if text:
-                    print(f"🗣 Recognized: {text}")
-                    return text  # Return recognized speech
-                
-if __name__ == "main":
+        recognizer.adjust_for_ambient_noise(source)  # Reduce background noise
+        try:
+            audio = recognizer.listen(source, timeout=10)  # Listen with a timeout
+            text = recognizer.recognize_google(audio)  # Use Google's API
+            print(f"🗣 Recognized: {text}")
+            return text.lower()
+        except sr.UnknownValueError:
+            print("❌ Sorry, I couldn't understand.")
+            return ""
+        except sr.RequestError:
+            print("❌ Error with recognition service.")
+            return ""
+        except sr.WaitTimeoutError:
+            print("⏳ No speech detected, try again.")
+            return ""
+
+if __name__ == "__main__":
     recognize_speech()

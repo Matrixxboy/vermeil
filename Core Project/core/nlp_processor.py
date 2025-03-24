@@ -1,4 +1,14 @@
 import spacy
+import pyttsx3
+import time
+
+# Initialize text-to-speech engine
+engine = pyttsx3.init()
+
+def speak(text):
+    """Convert text to speech and speak it aloud."""
+    engine.say(text)
+    engine.runAndWait()
 
 # Try loading the model safely
 try:
@@ -26,18 +36,17 @@ def recognize_intent(user_input):
             return intent  # Return detected intent
     return "unknown"
 
-# Example usage
-if __name__ == "__main__":
-    while True:
-        command = input("You: ").strip()
-        if not command:
-            continue  # Ignore empty input
+def process_command(command):
+    """Processes the recognized intent and executes appropriate action."""
+    intent = recognize_intent(command)
+    # print(f"🎯 Recognized Intent: {intent}") #it will shows the command in terminal
 
-        intent = recognize_intent(command)
-        print(f"Recognized Intent: {intent}")
+    if intent == "time":
+        print(f"Current time is {time.strftime('%I:%M %p')}")  # Dynamic current time
+        speak(f"Current time is {time.strftime('%I:%M %p')}")  # Dynamic current time
 
-        if intent == "time":
-            print("Current time: 12:30 PM")  # Placeholder time
-        elif intent == "shutdown":
-            print("Shutting down Vermeil AI...")
-            break
+    elif intent == "shutdown":
+        speak("🛑 Shutting down Vermeil AI...")
+        return True  # Return True to signal AI shutdown
+
+    return False  # Return False to keep AI running
