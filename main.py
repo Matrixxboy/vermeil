@@ -30,16 +30,6 @@ while True:
 
                 if result == "shutdown":
                     listen_for_wake_word()
-                    # confirmation = recognize_speech()
-
-                    # if "yes" in confirmation:
-                    #     print("🔻 Vermeil is going to sleep.")
-                    #     speak("Alright, I am going to sleep now.")
-                    #     exit(1)  # Exit the 10-minute loop and wait for wake word
-                    # else:
-                    #     print("🔄 Okay, I'll keep listening.")
-                    #     speak("Okay, I'll keep listening.")
-                    #     start_time = time.time()  # Reset timer
 
         print("⏳ 10 minutes passed. Going to sleep...")
         speak("Time's up! I will wait for your command again.")

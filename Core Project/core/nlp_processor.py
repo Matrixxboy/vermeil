@@ -1,9 +1,9 @@
 import spacy
-import time
 import json
 import os
 from memory import INTENTS
 from response_engine import speak
+from speech_recog import recognize_speech
 
 try:
     nlp = spacy.load("en_core_web_md")  # Use "en_core_web_md" for better accuracy
@@ -38,13 +38,11 @@ def recognize_intent(user_input):
 
     doc = nlp(user_input.lower())  # Process text
 
-    # Debugging: Print received input
-    print(f"🔍 Debug: Received input -> {user_input.lower()}")
 
     # ✅ Check INTENTS and their samples
     for intent, data in INTENTS.items():
         for sample in data["samples"]:
-            print(f"🔍 Checking intent '{intent}' with sample '{sample}'")
+            # print(f"🔍 Checking intent '{intent}' with sample '{sample}'")
             if user_input.lower() == sample:
                 print(f"✅ Matched Intent: {intent}")
                 return intent
@@ -63,11 +61,6 @@ def process_command(command):
 
     if intent in INTENTS:
         response = INTENTS[intent].get("response", "I don’t have a response for this.")
-        print(f"🔍 Debug: Found intent '{intent}' with response: {response}")
-
-        # Replace {time} placeholder dynamically
-        if "{time}" in response:
-            response = response.replace("{time}", time.strftime("%I:%M %p"))
 
         print(f"🤖 {response}")  # Print response to terminal
         speak(response)  # Speak response

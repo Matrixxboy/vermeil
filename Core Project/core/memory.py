@@ -1,26 +1,100 @@
-# # Dictionary storing intents and sample queries
-# INTENTS = {
-#     "open_app": {
-#         "samples": ["open", "launch", "start", "run"],
-#         "response": "Opening the application."
-#     },
-#     "weather": {
-#         "samples": ["weather", "forecast", "temperature", "tell me the weather", "what's the weather like"],
-#         "response": "Checking the weather for you."
-#     },
-#     "time": {
-#         "samples": ["time", "clock", "what time is it", "current time"],
-#         "response": "Current time is {time}."
-#     },
-#     "shutdown": {
-#         "samples": ["shutdown", "turn off", "power off", "exit AI", "close AI"],
-#         "response": "Shutting down Vermeil AI."
-#     }
-# }
+import time
+from datetime import date
 
+from plugins.weather import get_weather
+from plugins.jokes import tell_joke
 
 INTENTS = {
-    "greeting": {"samples": ["hello", "hi", "hey"], "response": "Hello! How can I help?"},
-    "time": {"samples": ["what time is it","what time it is", "current time"], "response": "The time is {time}."},
-    "shutdown": {"samples": ["shutdown", "turn off"], "response": "Okay i will wait for you to wake me up."}
+    # Greetings
+    "greeting": {
+        "samples": ["hello", "hi", "hey", "good morning", "good evening", "what's up"],
+        "response": "Hello! How can I assist you today?"
+    },
+    
+    # Time-related queries
+    "time": {
+        "samples": ["what time is it", "what time it is","current time", "tell me the time"],
+        "response": "The time is "+time.strftime("%I:%M %p")+" ."
+    },
+    
+    # Date-related queries
+    "date": {
+        "samples": ["what's today's date", "current date", "what day is it today","today's date"],
+        "response": "Today's date is "+date.today().strftime("%A, %B %d, %Y")+"."
+    },
+
+    # System Shutdown / Sleep Mode
+    "shutdown": {
+        "samples": ["shutdown", "turn off", "go to sleep","sleep mode","sleepmode"],
+        "response": "Okay, I will wait for you to wake me up."
+    },
+
+    # Weather-related queries
+    "weather": {
+        "samples": ["what's the weather like", "current weather", "is it raining", "is it sunny today"],
+        "response": get_weather()
+    },
+
+    # General Knowledge
+    "who_are_you": {
+        "samples": ["who are you", "what is your name", "introduce yourself"],
+        "response": "I am Vermeil, your personal AI assistant."
+    },
+    
+    "how_are_you": {
+        "samples": ["how are you", "how's it going", "how do you feel"],
+        "response": "I'm just a program, but I'm feeling quite functional today!"
+    },
+
+    # Fun responses (Jokes, Quotes)
+    "joke": {
+        "samples": ["tell me a joke", "make me laugh", "funny joke"],
+        "response": tell_joke()
+    },
+
+    "quote": {
+        "samples": ["give me a quote", "inspire me", "motivation"],
+        "response": "The only way to do great work is to love what you do. - Steve Jobs"
+    },
+
+    # Basic Math
+    "math_addition": {
+        "samples": ["what is 2 plus 2", "calculate 5 + 3", "add 10 and 20"],
+        "response": "I'm not a calculator, but the answer is probably simple math!"
+    },
+
+    # System Commands
+    "restart": {
+        "samples": ["restart", "reboot"],
+        "response": "Restarting now... Just kidding! I can't actually restart anything."
+    },
+    
+    "battery_status": {
+        "samples": ["what's my battery", "battery status", "battery percentage"],
+        "response": "I can't check your battery directly, but you can check your system settings."
+    },
+
+    # Opening Applications (Customizable)
+    "open_browser": {
+        "samples": ["open browser", "start chrome", "launch firefox"],
+        "response": "I can't open apps yet, but you can launch it manually!"
+    },
+
+    # Personalization
+    "favorite_color": {
+        "samples": ["what's your favorite color", "do you like colors"],
+        "response": "I like all colors, but purple is quite nice!"
+    },
+
+    # Random Facts
+    "fact": {
+        "samples": ["tell me a fact", "give me a random fact", "random knowledge"],
+        "response": "Did you know? A group of flamingos is called a 'flamboyance'!"
+    },
+
+    # Closing Chat
+    "goodbye": {
+        "samples": ["goodbye", "bye", "see you later"],
+        "response": "Goodbye! Have a great day!"
+    }
 }
