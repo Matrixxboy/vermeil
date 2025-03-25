@@ -1,5 +1,4 @@
 import pyttsx3
-import time
 
 # Initialize text-to-speech engine
 engine = pyttsx3.init()
