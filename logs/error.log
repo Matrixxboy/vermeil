@@ -1,0 +1,15 @@
+{
+    "timestamp": "2025-03-27 09:39:38",
+    "error": "LaTeX parsing requires the antlr4 Python package, provided by pip (antlr4-python3-runtime) or conda (antlr-python-runtime), version 4.11",
+    "traceback": "Traceback (most recent call last):\n  File \"D:\\Project Vermeil AI\\vermeil\\Core Project\\core\\plugins\\math_engine.py\", line 50, in solve_latex_equation\n    eq = parse_latex(latex_eq)\n         ^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Project Vermeil AI\\vermeil\\.venv\\Lib\\site-packages\\sympy\\parsing\\latex\\__init__.py\", line 61, in parse_latex\n    return _latex.parse_latex(s, strict)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Project Vermeil AI\\vermeil\\.venv\\Lib\\site-packages\\sympy\\parsing\\latex\\_parse_latex_antlr.py\", line 66, in parse_latex\n    raise ImportError(\"LaTeX parsing requires the antlr4 Python package,\"\nImportError: LaTeX parsing requires the antlr4 Python package, provided by pip (antlr4-python3-runtime) or conda (antlr-python-runtime), version 4.11\n"
+}
+{
+    "timestamp": "2025-03-27 12:17:08",
+    "error": "LaTeX parsing requires the antlr4 Python package, provided by pip (antlr4-python3-runtime) or conda (antlr-python-runtime), version 4.11",
+    "traceback": "Traceback (most recent call last):\n  File \"D:\\Project Vermeil AI\\vermeil\\Core Project\\core\\plugins\\math_engine.py\", line 31, in solve_latex_equation\n    eq = parse_latex(user_response)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Project Vermeil AI\\vermeil\\.venv\\Lib\\site-packages\\sympy\\parsing\\latex\\__init__.py\", line 61, in parse_latex\n    return _latex.parse_latex(s, strict)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Project Vermeil AI\\vermeil\\.venv\\Lib\\site-packages\\sympy\\parsing\\latex\\_parse_latex_antlr.py\", line 66, in parse_latex\n    raise ImportError(\"LaTeX parsing requires the antlr4 Python package,\"\nImportError: LaTeX parsing requires the antlr4 Python package, provided by pip (antlr4-python3-runtime) or conda (antlr-python-runtime), version 4.11\n"
+}
+{
+    "timestamp": "2025-03-27 12:21:09",
+    "error": "LaTeX parsing requires the antlr4 Python package, provided by pip (antlr4-python3-runtime) or conda (antlr-python-runtime), version 4.11",
+    "traceback": "Traceback (most recent call last):\n  File \"D:\\Project Vermeil AI\\vermeil\\Core Project\\core\\plugins\\math_engine.py\", line 31, in solve_latex_equation\n    eq = parse_latex(user_response)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Project Vermeil AI\\vermeil\\.venv\\Lib\\site-packages\\sympy\\parsing\\latex\\__init__.py\", line 61, in parse_latex\n    return _latex.parse_latex(s, strict)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Project Vermeil AI\\vermeil\\.venv\\Lib\\site-packages\\sympy\\parsing\\latex\\_parse_latex_antlr.py\", line 66, in parse_latex\n    raise ImportError(\"LaTeX parsing requires the antlr4 Python package,\"\nImportError: LaTeX parsing requires the antlr4 Python package, provided by pip (antlr4-python3-runtime) or conda (antlr-python-runtime), version 4.11\n"
+}

@@ -3,6 +3,7 @@ from datetime import date
 
 from plugins.weather import get_weather
 from plugins.jokes import tell_joke
+from plugins.math_engine import solve_math_expression
 
 INTENTS = {
     # Greetings
@@ -25,14 +26,14 @@ INTENTS = {
 
     # System Shutdown / Sleep Mode
     "shutdown": {
-        "samples": ["shutdown", "turn off", "go to sleep","sleep mode","sleepmode"],
+        "samples": ["shutdown","shut down", "turn off", "go to sleep","sleep mode","sleepmode"],
         "response": "Okay, I will wait for you to wake me up."
     },
 
     # Weather-related queries
     "weather": {
         "samples": ["what's the weather like", "current weather", "is it raining", "is it sunny today"],
-        "response": get_weather()
+        "response": get_weather
     },
 
     # General Knowledge
@@ -49,7 +50,7 @@ INTENTS = {
     # Fun responses (Jokes, Quotes)
     "joke": {
         "samples": ["tell me a joke", "make me laugh", "funny joke"],
-        "response": tell_joke()
+        "response": tell_joke
     },
 
     "quote": {
@@ -58,9 +59,9 @@ INTENTS = {
     },
 
     # Basic Math
-    "math_addition": {
-        "samples": ["what is 2 plus 2", "calculate 5 + 3", "add 10 and 20"],
-        "response": "I'm not a calculator, but the answer is probably simple math!"
+    "mathematics": {
+        "samples": ["i need help in math","maths problem"],
+        "response": solve_math_expression
     },
 
     # System Commands
@@ -82,7 +83,7 @@ INTENTS = {
 
     # Personalization
     "favorite_color": {
-        "samples": ["what's your favorite color", "do you like colors"],
+        "samples": ["what's your favorite color","what's your favorite colour", "do you like colors","do you like colorus"],
         "response": "I like all colors, but purple is quite nice!"
     },
 

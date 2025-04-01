@@ -22,9 +22,10 @@ while True:
 
         start_time = time.time()  # Record start time
         while (time.time() - start_time) < ACTIVE_DURATION:
-            command = recognize_speech()
+            # command = recognize_speech()
+            command=input("Enter your command: ")
             print(f"🗣 Command: {command}")
-
+            
             if command:
                 result = process_command(command)
 
