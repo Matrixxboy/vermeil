@@ -4,6 +4,7 @@ from datetime import date
 from plugins.weather import get_weather
 from plugins.jokes import tell_joke
 from plugins.math_engine import solve_math_expression
+from plugins.vision import start_vision_mode, scan_current_frame, close_vision_mode
 
 INTENTS = {
     # Greetings
@@ -97,5 +98,22 @@ INTENTS = {
     "goodbye": {
         "samples": ["goodbye", "bye", "see you later"],
         "response": "Goodbye! Have a great day!"
-    }
+    },
+    
+    # the computer vision command 
+    "start_vision": {
+        "samples": ["start scanning", "start vision mode", "activate camera"],
+        "response": start_vision_mode
+    },
+
+    "scan_now": {
+        "samples": ["scan this", "what is this", "analyze this"],
+        "response": scan_current_frame
+    },
+
+    "close_vision": {
+        "samples": ["close vision", "stop scanning", "deactivate camera"],
+        "response": close_vision_mode
+    },
+
 }

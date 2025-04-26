@@ -7,6 +7,8 @@ from datetime import datetime
 from memory import INTENTS
 from response_engine import speak
 from speech_recog import recognize_speech
+from plugins.vision import start_vision_mode, process_vision_commands, show_camera_feed
+import threading
 
 # Configure logging for normal logs
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -94,17 +96,32 @@ def process_intent(matched_intent):
 
 def process_command(command):
     try:
+        # --- Vision related commands ---
+        if "start scanning" in command.lower():
+            speak("Starting vision mode.")
+            start_vision_mode()
+            threading.Thread(target=show_camera_feed, daemon=True).start()
+            return "continue"
+
+        elif "scan this" in command.lower() or "close vision" in command.lower():
+            result = process_vision_commands(command)
+            speak(result)
+            return "continue"
+
+        # --- Normal intent recognition ---
         intent = recognize_intent(command)
         if intent in INTENTS:
-            response = process_intent(intent)  # ✅ Now calling process_intent
+            response = process_intent(intent)
             logging.info(f"🤖 Responding: {response}")
             speak(response)
             if intent == "shutdown":
                 return "shutdown"
+
         elif intent == "learned":
             response = MEMORY_DATA.get(command.lower(), "Sorry, I forgot this command.")
             logging.info(f"🤖 Learned Response: {response}")
             speak(response)
+
         else:
             logging.info("🤖 Unrecognized command. Asking to learn.")
             speak("I don’t know this command. Would you like to teach me?")
@@ -116,7 +133,9 @@ def process_command(command):
                 save_memory(MEMORY_DATA)
                 logging.info("✅ Learned new command.")
                 speak("Got it! I'll remember this command.")
+        
         return "continue"
+
     except Exception as e:
         log_error(e)
         return "continue"
