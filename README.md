@@ -81,7 +81,8 @@ Follow these steps to get Vermeil running on your local machine.
     Ensure the following variables are set to point to your local Ollama instance and the custom model:
     ```python
     OLLAMA_URL = "http://localhost:11434/api/generate"
-    OLLAMA_MODEL = "vermeil"
+    #you can use default model : phi3:mini
+    OLLAMA_MODEL = "vermeil" #or "phi3:mini"
     ```
 
 3.  **Create a Virtual Environment & Install Dependencies:**
