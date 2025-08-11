@@ -98,30 +98,65 @@ Once Ollama is running and the project is configured, launch the application:
 python main.py
 ```
 
-🧩 Extending with Model Context Protocol (MCP)
-One of Vermeil's most powerful features is its extensibility. MCP allows you to inject custom context, tools, or data into the model before it processes a prompt. This enables you to tailor Vermeil's knowledge and capabilities to your specific needs.
-How to add your own context:
- * Navigate to the core_project/MCP/ directory.
- * Add your custom protocol files or modules in this directory.
- * The application will automatically detect and load them, making them available to the LLM.
-This system is designed to be simple yet powerful, allowing for deep customization without altering the core codebase.
-🗺️ Roadmap
+## 🧩 Extending with Model Context Protocol (MCP)
+
+One of **Vermeil's** most powerful features is its **extensibility**.  
+MCP allows you to inject **custom context, tools, or data** into the model before it processes a prompt.  
+This enables you to tailor Vermeil's knowledge and capabilities to your specific needs.
+
+### 🔧 How to add your own context
+1. Navigate to the `core_project/MCP/` directory.
+2. Add your **custom protocol files** or modules in this directory.
+3. The application will automatically detect and load them, making them available to the LLM.
+
+> This system is designed to be simple yet powerful, allowing for deep customization without altering the core codebase.
+
+---
+
+## 🗺️ Roadmap
 We have an exciting future planned for Vermeil! Here's what we're working on:
- * [x] Core AI Assistant (Desktop)
- * [ ] Fully-featured Mobile Application
- * [ ] IoT Device Integration for smart home commands
- * [ ] Advanced Tool Integration via MCP
- * [ ] Community-driven MCP library
- * [ ] Further performance and cost-optimization research
-🤝 Contributing
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
- * Fork the Project
- * Create your Feature Branch (git checkout -b feature/AmazingFeature)
- * Commit your Changes (git commit -m 'Add some AmazingFeature')
- * Push to the Branch (git push origin feature/AmazingFeature)
- * Open a Pull Request
-📄 License
-Distributed under the MIT License. See LICENSE for more information.
+
+- [x] Core AI Assistant (Desktop)  
+- [ ] Fully-featured Mobile Application  
+- [ ] IoT Device Integration for smart home commands  
+- [ ] Advanced Tool Integration via MCP  
+- [ ] Community-driven MCP library  
+- [ ] Further performance and cost-optimization research  
+
+---
+
+## 🤝 Contributing
+
+Contributions are what make the **open-source community** such an amazing place to learn, inspire, and create.  
+Any contributions you make are greatly appreciated.  
+
+If you have a suggestion that would make this better:  
+- Fork the Project  
+- Create your Feature Branch  
+  ```bash
+  git checkout -b feature/AmazingFeature
+  ```
+
+- Commit your Changes
+  ```bash
+  git commit -m 'Add some AmazingFeature'
+  ```
+
+- Push to the Branch
+  ```bash
+  git push origin feature/AmazingFeature
+  ```
+
+Open a Pull Request
+
+
+
+---
+
+## 📄 License
+
+Distributed under the **MIT** License.
+See LICENSE for more information.
+
 <p align="center">Stay tuned for more updates! 🚀</p>
 
