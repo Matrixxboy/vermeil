@@ -62,11 +62,13 @@ Follow these steps to get Vermeil running on your local machine.
     ```
 
 3.  **Create the Custom 'vermeil' Model:**
-    Vermeil is designed to work with a custom model entry. In the root of this project, you will find a `Modelfile`. Use it to create the `vermeil` model by running:
+    Vermeil is designed to work with a custom model entry. In the root of this project, you will find a [`Modelfile`](https://github.com/Matrixxboy/LLM_projects/blob/main/chatVoiceBot/Modelfile) (click to see example). Use it to create the `vermeil` model by running:
     ```sh
     ollama create vermeil -f Modelfile
     ```
-    You can verify the model was created by running `ollama list`.
+    (You can skip this step)
+
+    
 
 ### Step 2: Configure and Install the Project
 
