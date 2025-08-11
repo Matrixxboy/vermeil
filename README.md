@@ -72,7 +72,7 @@ Follow these steps to get Vermeil running on your local machine.
 
 1.  **Clone the repository:**
     ```sh
-    git clone [https://github.com/Matrixxboy/vermeil.git](https://github.com/Matrixxboy/vermeil.git)
+    git clone https://github.com/Matrixxboy/vermeil.git
     cd vermeil
     ```
 
