@@ -50,7 +50,7 @@ Follow these steps to get Vermeil running on your local machine.
 1.  **Install Ollama:**
     -   **For macOS & Linux:**
         ```sh
-        curl -fsSL [https://ollama.com/install.sh](https://ollama.com/install.sh) | sh
+        curl -fsSL https://ollama.com/install.sh | sh
         ```
     -   **For Windows:**
         Download and run the installer from the [**Ollama website**](https://ollama.com/download).
