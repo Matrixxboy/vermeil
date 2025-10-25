@@ -26,9 +26,20 @@ while True:
     try:
         user_input = listen()
 
+        # Check if speech was detected
+        if user_input is None:
+            print("⚠ No input detected, please try again.")
+            continue  # go back to listening
+
+        # Now safe to strip and lowercase
         if user_input.strip().lower() in ["exit", "quit"]:
             print("👋 Goodbye.")
             break
+
+        # Otherwise, process the input
+        print(f"💬 You said: {user_input}")
+
+
 
         # Detect context needs from user input
         selected_mcp = []
