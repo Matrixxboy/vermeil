@@ -1,0 +1,19 @@
+requests
+geocoder
+psutil
+spacy
+pyttsx3
+pvporcupine
+pyaudio
+python-dotenv
+SpeechRecognition
+TTS
+torch
+sounddevice
+wikipedia
+feedparser
+googlesearch-python
+# RAG Dependencies
+chromadb
+sentence-transformers
+transformers==4.36.2

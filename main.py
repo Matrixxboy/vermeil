@@ -10,7 +10,13 @@ sys.path.append(CORE_DIR)
 from speech_recog import listen
 from Model_client import query_llm
 from response_engine import speak
+from customAI.custom_voice.ai_personality import SYSTEM_PROMPT
 from core_project.MCP.mcp import collect_contexts
+from rag_engine import RAGSystem
+
+# Initialize RAG System
+rag = RAGSystem()
+rag.ingest("core_project/knowledge_base")
 
 # Sleep configuration (minutes)
 SLEEP_TIME = 5
@@ -52,14 +58,34 @@ while True:
             selected_mcp.append("system")
         if "location" in lowered_input or "where" in lowered_input:
             selected_mcp.append("location")
+            
+        # New Capabilities
+        if "news" in lowered_input:
+            selected_mcp.append("news")
+        if "who is" in lowered_input or "what is" in lowered_input or "wiki" in lowered_input:
+            selected_mcp.append("wiki")
+        if "open" in lowered_input:
+            selected_mcp.append("open_site")
+        if "search" in lowered_input and "youtube" not in lowered_input:
+             selected_mcp.append("web_search")
+        if "youtube" in lowered_input or "play" in lowered_input:
+            selected_mcp.append("youtube")
+        if "whatsapp" in lowered_input:
+            selected_mcp.append("whatsapp")
 
         # Default MCP if none matched
         if not selected_mcp:
-            selected_mcp = ["time"]
+            selected_mcp = ["time"] # Default to time, or maybe nothing?
 
         # Collect contextual information
-        context = collect_contexts(selected_mcp)
-        full_prompt = f"[System Info]\n{context}\n\n[User]: {user_input}\n[Assistant]:"
+        context = collect_contexts(selected_mcp, user_input=user_input)
+        
+        # Collect RAG context
+        rag_context = rag.query(user_input)
+        if rag_context:
+            context += f"\n\n[Memory/Knowledge Base]\n{rag_context}"
+            
+        full_prompt = f"{SYSTEM_PROMPT}\n\n[System Info]\n{context}\n\n[User]: {user_input}\n[Assistant]:"
 
         print("📡 Sending to LLM...")
         response = query_llm(full_prompt)

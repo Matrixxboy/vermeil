@@ -2,12 +2,15 @@ import speech_recognition as sr
 
 recognizer = sr.Recognizer()
 
-def listen(timeout=5, phrase_time_limit=10):
+def listen(timeout=5, phrase_time_limit=None):
     try:
         with sr.Microphone() as source:
             print("\n🎤 Adjusting for ambient noise...")
             recognizer.adjust_for_ambient_noise(source, duration=1)
-            print("🗣️ Speak now (you have {} seconds)...".format(phrase_time_limit))
+            print("🗣️ Speak now (listening for pause)...")
+            
+            # dynamic_energy_threshold=True is default, but explicit setting might help if needed
+            # recognizer.pause_threshold = 1.0 # Optional: increase pause threshold
             
             audio = recognizer.listen(source, timeout=timeout, phrase_time_limit=phrase_time_limit)
 
